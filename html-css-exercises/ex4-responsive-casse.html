@@ -18,14 +18,7 @@
             gap: 20px;
             max-width: 1000px;
             margin: 0 auto;
-        }
-
-        .text-section {
-            flex: 1;
-        }
-
-        .image-section {
-            flex: 1;
+            flex-wrap: wrap;
         }
 
         .image-section img {
@@ -42,9 +35,10 @@
             color: #555;
         }
 
-        @media (max-width 768) {
+        @media (max-width: 768px) {
             .content-wraper {
                 flex-direction: column;
+                width: 100%;
             }
         }
     </style>
