@@ -45,22 +45,25 @@
     </style>
     
     <script>
-        const box = document.querySelector('#display-box');
+    document.addEventListener("DOMContentLoaded", () => {
+        const box = document.querySelector('#displayBox');
         const changeColorBtn = document.querySelector('#changeColor');
         const changeTextBtn = document.querySelector('#changeText');
 
-        changeColorBtn.addEventListener('click', function() {
+        changeColorBtn.addEventListener('click', () => {
             const colors = ['#e74c3c', '#9b59b6', '#f39c12', '#1abc9c', '#34495e'];
             const randomColor = colors[Math.floor(Math.random() * colors.length)];
             box.style.backgroundColor = randomColor;
         });
 
-        changeTextBtn.addEventListener('click', function() {
+        changeTextBtn.addEventListener('click', () => {
             const texts = ['Super !', 'Génial !', 'Bravo !', 'Excellent !', 'Fantastique !'];
             const randomText = texts[Math.floor(Math.random() * texts.length)];
             box.textContent = randomText;
         });
-    </script>
+    });
+</script>
+
 </head>
 <body>
     <h1>Exercice DOM null</h1>
