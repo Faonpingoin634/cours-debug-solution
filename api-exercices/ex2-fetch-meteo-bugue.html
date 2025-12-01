@@ -130,7 +130,7 @@
           const data = await response.json();
 
           const temperature =
-            data.current_weather.temperature || data.current_weather.temp; // selon la version de l'API
+            data.current_weather.temperature || data.current_weather.temp; 
           const windSpeed = data.current_weather.windspeed;
 
           meteoInfo.innerHTML = `
