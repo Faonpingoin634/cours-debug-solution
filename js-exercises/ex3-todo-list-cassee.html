@@ -2,126 +2,129 @@
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Exercice JS 3 - Todo List cassée</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 40px;
-            background-color: #f9f9f9;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        background-color: #f9f9f9;
+      }
 
-        .container {
-            max-width: 500px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
 
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-        }
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+      }
 
-        .input-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+      .input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
 
-        #todoInput {
-            flex: 1;
-            padding: 10px;
-            font-size: 16px;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-        }
+      #todoInput {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+      }
 
-        #addBtn {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-        }
+      #addBtn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
 
-        #addBtn:hover {
-            background-color: #2980b9;
-        }
+      #addBtn:hover {
+        background-color: #2980b9;
+      }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
 
-        li {
-            background-color: #ecf0f1;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      li {
+        background-color: #ecf0f1;
+        padding: 12px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .delete-btn {
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 3px;
-            cursor: pointer;
-        }
+      .delete-btn {
+        background-color: #e74c3c;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h1>Ma Todo List</h1>
-        
-        <div class="input-group">
-            <input type="text" id="todoInput" placeholder="Ajouter une tâche...">
-            <button id="addBtn">Ajouter</button>
-        </div>
-        
-        <ul id="todoList"></ul>
+      <h1>Ma Todo List</h1>
+
+      <div class="input-group">
+        <input type="text" id="todoInput" placeholder="Ajouter une tâche..." />
+        <button id="addBtn">Ajouter</button>
+      </div>
+
+      <ul id="todoList"></ul>
     </div>
 
     <script>
-        const todoInput = document.querySelector('#todoInput');
-        const addBtn = document.querySelector('#addBtn');
-        const todoList = document.querySelector('#todoListe');
+      const todoInput = document.querySelector("#todoInput");
+      const addBtn = document.querySelector("#addBtn");
+      const todoList = document.querySelector("#todoList");
 
-        function ajouterTache() {
-            const tacheTexte = todoInput.value;
-            
-            const li = document.createElement('li');
-            li.innerHTML = `
+      function ajouterTache() {
+        const tacheTexte = todoInput.value.trim();
+
+        if (tacheTexte === "") {
+          return; 
+        }
+
+        const li = document.createElement("li");
+        li.innerHTML = `
                 <span>${tacheTexte}</span>
                 <button class="delete-btn" onclick="supprimerTache(this)">Supprimer</button>
             `;
-            
-            todoList.appendChild(li);
-            todoInput.value = '';
+
+        todoList.appendChild(li);
+        todoInput.value = "";
+      }
+
+      function supprimerTache(button) {
+        button.parentElement.remove();
+      }
+
+      addBtn.addEventListener("click", ajouterTache);
+
+      todoInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          ajouterTache();
         }
-
-        function supprimerTache(button) {
-            button.parentElement.remove();
-        }
-
-        addBtn.addEventListener('click', ajouterTache);
-
-        todoInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                ajouterTache();
-            }
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
-
