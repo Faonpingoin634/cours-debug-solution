@@ -1,0 +1,62 @@
+<!-- EXERCICE : ex1-button-ne-marche-pas / Thème : JavaScript événements / Niveau : Débutant -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice JS 1 - Bouton cassé</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        #clickButton {
+            background-color: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+
+        #clickButton:hover {
+            background-color: #2980b9;
+        }
+
+        #message {
+            font-size: 18px;
+            color: #27ae60;
+            margin-top: 20px;
+            min-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercice : Bouton qui ne marche pas</h1>
+    <p>Cliquez sur le bouton pour afficher un message !</p>
+    
+    <button id="clickButton">Cliquez-moi !</button>
+    
+    <p id="message"></p>
+
+    <script>
+        const button = document.querySelector('.click-button');
+        const messageDisplay = document.querySelector('#messaje');
+
+        button.addEventListener('click', function() {
+            messageDisplay.textContent = 'Bravo ! Vous avez réussi à débugger ce bouton !';
+        });
+    </script>
+</body>
+</html>
+

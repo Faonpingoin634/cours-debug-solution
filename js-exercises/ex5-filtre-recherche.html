@@ -1,0 +1,152 @@
+<!-- EXERCICE : ex5-filtre-recherche / Thème : JavaScript filtrage de liste / Niveau : Intermédiaire -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice JS 5 - Filtre de recherche</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .user-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .user-item {
+            padding: 15px;
+            background-color: #ecf0f1;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-item.hidden {
+            display: none;
+        }
+
+        .user-name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .user-email {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #7f8c8d;
+            padding: 20px;
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recherche d'utilisateurs</h1>
+        <input type="text" id="searchInput" placeholder="Rechercher un utilisateur...">
+        
+        <ul class="user-list" id="userList">
+            <li class="user-item">
+                <div>
+                    <div class="user-name">Marie Dupont</div>
+                    <div class="user-email">marie.dupont@email.com</div>
+                </div>
+            </li>
+            <li class="user-item">
+                <div>
+                    <div class="user-name">Pierre Martin</div>
+                    <div class="user-email">pierre.martin@email.com</div>
+                </div>
+            </li>
+            <li class="user-item">
+                <div>
+                    <div class="user-name">Sophie Bernard</div>
+                    <div class="user-email">sophie.bernard@email.com</div>
+                </div>
+            </li>
+            <li class="user-item">
+                <div>
+                    <div class="user-name">Lucas Petit</div>
+                    <div class="user-email">lucas.petit@email.com</div>
+                </div>
+            </li>
+            <li class="user-item">
+                <div>
+                    <div class="user-name">Emma Dubois</div>
+                    <div class="user-email">emma.dubois@email.com</div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="no-results" id="noResults">Aucun résultat trouvé</div>
+    </div>
+
+    <script>
+        const searchInput = document.querySelector('#searchInput');
+        const userItems = document.querySelectorAll('.user-item');
+        const noResults = document.querySelector('#noResults');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = searchInput.value.toLowerCase;
+            let visibleCount = 0;
+
+            userItems.forEach(item => {
+                const userName = item.querySelector('.user-name').textContent.toLowerCase();
+                const userEmail = item.querySelector('.user-email').textContent.toLowerCase();
+
+                if (userName.includes(searchTerm) || userEmail.includes(searchTerm)) {
+                    item.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
+

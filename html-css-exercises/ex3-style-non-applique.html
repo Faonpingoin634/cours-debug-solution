@@ -1,0 +1,52 @@
+<!-- EXERCICE : ex3-style-non-applique / Thème : Sélecteurs CSS / Niveau : Débutant -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 3 - Style non appliqué</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        .btn-rouge {
+            background-color: #e74c3c;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        #special-button {
+            background-color: blue;
+            color: yellow;
+        }
+
+        .description {
+            margin: 20px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exercice de style</h1>
+    
+    <p class="description">Le bouton ci-dessous devrait être rouge avec du texte blanc, mais ce n'est pas le cas...</p>
+    
+    <button class="bouton-rouge" id="special-button">Cliquez ici</button>
+    
+    <p class="descripton">Trouvez pourquoi le style ne s'applique pas correctement !</p>
+</body>
+</html>
+
